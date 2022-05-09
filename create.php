@@ -23,6 +23,8 @@
 
 ?>
 
+<?php  include('nav.php') ?>
+
 <form method="get">
     <input type="text" name="message" required>
     <button name="addBtn">ADD</button>
