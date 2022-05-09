@@ -24,13 +24,17 @@
                     </a>
                 </div>
                 <hr>
+                <?php 
+                    if(isset($_GET['addBtn'])){
+                        categoryCreate();
+                    }
+                ?>
                     <form method="get">
                         <div class="form-inline">
                             <input type="text" name="message" class=" form-control mr-2"  required>
                             <button name="addBtn" class="btn btn-primary">ADD</button>
                         </div>
                     </form>
-                </form>
             </div>
         </div>
     </div>

@@ -39,25 +39,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php 
-                        $sql = 'SELECT * FROM to_do';
-                        $query = mysqli_query($conn,$sql);
-                        $total_rows = mysqli_num_rows($query); // Total Rows
-
-                        while($row = mysqli_fetch_assoc($query)){
+                        <?php
+                            foreach (categoryList() as $row){
                             $time = date("g:i" , strtotime($row['created_at'] ));
                         ?>
-
                             <tr>
                                 <td> <?php echo $row['id'] ?> </td>
                                 <td> <?php echo $row['message'] ?> </td>
                                 <td>
-                                    <a href=""></a>
+                                    <a class="btn btn-warning btn-sm" href="category_update.php?id=<?php echo $row['id'] ?>">Edit</a>
+                                    <a class="btn btn-danger btn-sm" href="category_delete.php?id=<?php echo $row['id'] ?>">Delete</a>
                                 </td>
                                 <td> <?php echo $time ?> </td>
                             </tr>
-
-                        <?php  } ?>
+                        <?php
+                            }
+                            ?>
                     </tbody>
                 </table>
             </div>
@@ -69,5 +66,7 @@
 <script src="<?php echo $url; ?>/assets/vendor/data_table/jquery.dataTables.min.js"></script>
 <script src="<?php echo $url; ?>/assets/vendor/data_table/dataTables.bootstrap4.min.js"></script>
 <script>
-    $("#list").dataTable();
+    $("#list").dataTable({
+        "order": [[ 0 , "desc" ]]
+    });
 </script>
