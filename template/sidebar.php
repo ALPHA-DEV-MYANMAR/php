@@ -1,3 +1,6 @@
+<?php require_once 'core/auth.php'?>
+<?php include 'template/header.php'?>
+
 <div class="col-12 col-lg-3 col-xl-2 vh-100 sidebar">
     <div class="d-flex justify-content-between align-items-center py-2 mt-3 nav-brand">
         <div class="d-flex align-items-center">
@@ -13,65 +16,79 @@
     <div class="nav-menu">
         <ul>
             <li class="menu-item">
-                <a href="<?php echo $url; ?>/index.php" class="menu-item-link ">
+                <a href="<?php echo $url; ?>/dashboard.php" class="menu-item-link ">
                     <span>
                         <i class="feather-home"></i>
                         Dashboard
                     </span>
                 </a>
             </li>
-            <li class="menu-spacer"></li>
-
-            <li class="menu-title">
-                <span>Manage Test</span>
-            </li>
-            
-            <li class="menu-item">
-                <a href="<?php echo $url; ?>/item_add.php" class="menu-item-link">
-                    <span>
-                        <i class="feather-plus-circle"></i>
-                        Add item
-                    </span>
-                </a>
-            </li>
-
-            <li class="menu-item">
-                <a href="<?php echo $url; ?>/category_list.php" class="menu-item-link">
-                    <span>
-                        <i class="feather-list"></i>
-                        Item List
-                    </span>
-                    <span class="badge badge-pill bg-white shadow-sm text-primary p-1">12</span>
-                </a>
-            </li>
-            <li class="menu-spacer"></li>
 
             <li class="menu-title">
                 <span>Category</span>
             </li>
-            
+
             <li class="menu-item">
-                <a href="<?php echo $url; ?>/category_create.php" class="menu-item-link">
+                <a href="<?php echo $url; ?>/category_add.php" class="menu-item-link">
                     <span>
                         <i class="feather-plus-circle"></i>
-                        Category Create
+                        Add category
                     </span>
                 </a>
             </li>
 
+            <li class="menu-spacer"></li>
+
             <li class="menu-item">
-                <a href="<?php echo $url; ?>/category_list.php" class="menu-item-link">
+                <a href="<?php echo $url; ?>/logout.php" class="btn btn-outline-danger w-100">
                     <span>
-                        <i class="feather-list"></i>
-                        Category Lists
+                        <i class="feather-lock"></i>
+                        Logout
                     </span>
-                    <span class="badge badge-pill bg-white shadow-sm text-primary p-1">12</span>
                 </a>
             </li>
-            <li class="menu-spacer"></li>
+<!---->
+<!--            <li class="menu-item">-->
+<!--                <a href="--><?php //echo $url; ?><!--/category_list.php" class="menu-item-link">-->
+<!--                    <span>-->
+<!--                        <i class="feather-list"></i>-->
+<!--                        Item List-->
+<!--                    </span>-->
+<!--                    <span class="badge badge-pill bg-white shadow-sm text-primary p-1">12</span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            <li class="menu-spacer"></li>-->
+<!---->
+<!--            <li class="menu-title">-->
+<!--                <span>Category</span>-->
+<!--            </li>-->
+<!--            -->
+<!--            <li class="menu-item">-->
+<!--                <a href="--><?php //echo $url; ?><!--/category_create.php" class="menu-item-link">-->
+<!--                    <span>-->
+<!--                        <i class="feather-plus-circle"></i>-->
+<!--                        Category Create-->
+<!--                    </span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!---->
+<!--            <li class="menu-item">-->
+<!--                <a href="--><?php //echo $url; ?><!--/category_list.php" class="menu-item-link">-->
+<!--                    <span>-->
+<!--                        <i class="feather-list"></i>-->
+<!--                        Category Lists-->
+<!--                    </span>-->
+<!--                    <span class="badge badge-pill bg-white shadow-sm text-primary p-1">12</span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            <li class="menu-spacer"></li>-->
+
+
 
 
         </ul>
 
     </div>
 </div>
+
+<?php include "template/footer.php" ?>

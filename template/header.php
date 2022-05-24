@@ -1,5 +1,4 @@
 <?php require_once "core/base.php"; ?>
-<?php require_once "core/conn.php" ?>
 <?php require_once "core/function.php" ?>
 <!doctype html>
 <html lang="en">
@@ -37,7 +36,8 @@
                         </form>
                         <div class="dropdown">
                             <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="<?php echo $url; ?>/assets/img/user/me.jpg" class="user-img shadow-sm" alt=""> Hein Htet Zan
+                                <img src="<?php echo $url; ?>/assets/img/user/me.jpg" class="user-img shadow-sm" alt="">
+                                <?php echo $_SESSION['user']['name'] ?>
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="#">Action</a>

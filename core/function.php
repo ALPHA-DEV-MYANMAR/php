@@ -1,57 +1,57 @@
-<?php 
+<?php
 
-function categoryList(){
-    global $conn;
-    // $sql = 'SELECT * FROM to_do ORDER BY id DESC '; 
-    $sql = 'SELECT * FROM to_do';
-    $query = mysqli_query($conn,$sql);
-    $total_rows = mysqli_num_rows($query);
-    $rows = [];
-    while ($row = mysqli_fetch_assoc($query)){
-        array_push($rows,$row);
-    }
-    return $rows;
+//common start
+function alert($data,$color="danger"){
+    return "<p class='alert alert-$color'>$data</p>";
 }
 
-function categoryCreate(){
-    global $conn;
-    $message = $_GET['message'];
-    $sql = "INSERT INTO to_do (message) VALUES ('$message')";
-    if(mysqli_query($conn,$sql)){
-        echo "<script>location.href = 'category_list.php'</script>";
+function runQuery($sql){
+    if(mysqli_query(con(),$sql)){
+        return true;
     }else{
-        die("Query failed");
+        die('MySql error!');
     }
 }
 
-function categoryDelete(){
-    global $conn;
-    $id = $_GET['id'];
-    $sql = "DELETE FROM to_do WHERE  id = $id";
+function redirect($l){
+    header("location:$l");
+}
+//common end
 
-    if(!mysqli_query($conn,$sql)){
-        die('Failed');
+//auth start
+function register(){
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $cpassword = $_POST["cpassword"];
+
+    if($password == $cpassword){
+        $sPass = password_hash($password,PASSWORD_DEFAULT);
+        $sql = "INSERT INTO users (`name`, `email`, `password`) VALUES ('$name','$email','$sPass')";
+        if(runQuery($sql)){
+            redirect("login.php");
+        }
     }else{
-        echo "<script>window.location.href = 'category_list.php'</script>";
+        return alert("စကား၀က်မတူဘူး");
     }
 }
 
-function categoryShow($id){
-    global $conn;
-    $id = $_GET['id'];
-    $sql = "SELECT * FROM to_do WHERE id=$id";
-    $query = mysqli_query($conn,$sql);
+function login(){
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $sql = "SELECT * FROM `users` WHERE email='$email'";
+    $query = mysqli_query(con(),$sql);
     $row = mysqli_fetch_assoc($query);
-    return $row;
-}
-
-function categoryUpdate(){
-    global $conn;
-    $message = $_GET["message"];
-    $id = $_GET['id'];
-    $sql  = "UPDATE to_do SET message='$message' WHERE id=$id";
-    if(mysqli_query($conn,$sql)){
-        echo "<script>window.location.href = 'category_list.php'</script>";
+    if(!$row){
+        return alert("မအောင်မြင်ပါ။","danger");
+    }else{
+        if(!password_verify($password,$row['password'])){
+            return alert("မအောင်မြင်ပါ");
+        }else{
+            session_start();
+            $_SESSION['user'] = $row;
+            redirect("dashboard.php");
+        }
     }
 }
-
+//end auth start

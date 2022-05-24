@@ -1,9 +1,15 @@
 <?php
 
+function con(){
+    return mysqli_connect('localhost','root','','php_blog');
+}
+
 $info = array(
-  "name" => "MMS IT",
-  "short" => "MMS",
-  "description" => "နည်းပညာ အခက်အခက်အခဲများ အတွက် MMS IT မှ ကူညီပေးလျှက်ရှိပါတယ်။ လူကြီးမင်းတို့၏ စီးပွာရေး လုပ်ငန်းများကိုနည်းပညာဖြင့် အဆင့်မြှင့်တင်နိုင်ဖို့ အခုပဲ ဆက်သွယ်လိုက်ပါ။",
+  "name" => "Blog",
+  "short" => "sb",
+  "description" => "Simple Project",
 );
+
+$role = ["Admin","Editor","User"];
 
 $url = "http://{$_SERVER['HTTP_HOST']}/web/PHP/blog";
